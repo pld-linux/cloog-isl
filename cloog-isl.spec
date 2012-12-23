@@ -1,19 +1,21 @@
+# TODO: OpenScop support
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
-Version:	0.17.0
+Version:	0.18.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Tools
 Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
-# Source0-md5:	0aa3302c81f65ca62c114e5264f8a802
+# Source0-md5:	be78a47bd82523250eb3e91646db5b3d
 URL:		http://www.cloog.org/
 BuildRequires:	autoconf >= 2.13
 BuildRequires:	automake
 BuildRequires:	gmp-devel >= 5.0.2
 BuildRequires:	gmp-c++-devel >= 5.0.2
-BuildRequires:	libtool
 BuildRequires:	isl-devel >= 0.08
+BuildRequires:	libtool
+BuildRequires:	texinfo-texi2dvi
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	cloog = %{version}
 Obsoletes:	cloog
@@ -89,6 +91,8 @@ Statyczna biblioteka opartej na isl wersji Chunky Loop Generatora.
 
 %{__make}
 
+%{__make} -C doc cloog.pdf
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -109,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README
 %attr(755,root,root) %{_libdir}/libcloog-isl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcloog-isl.so.3
+%attr(755,root,root) %ghost %{_libdir}/libcloog-isl.so.4
 
 %files devel
 %defattr(644,root,root,755)

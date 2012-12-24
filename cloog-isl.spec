@@ -1,4 +1,7 @@
-# TODO: OpenScop support
+#
+# Conditional build:
+%bcond_without	osl	# OpenScop support
+#
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
@@ -15,6 +18,7 @@ BuildRequires:	gmp-devel >= 5.0.2
 BuildRequires:	gmp-c++-devel >= 5.0.2
 BuildRequires:	isl-devel >= 0.08
 BuildRequires:	libtool
+%{?with_osl:BuildRequires:	osl-devel}
 BuildRequires:	texinfo-texi2dvi
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	cloog = %{version}
@@ -61,6 +65,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gmp-devel >= 5.0.2
 Requires:	gmp-c++-devel >= 5.0.2
 Requires:	isl-devel >= 0.08
+%{?with_osl:Requires:	osl-devel}
 Provides:	cloog-devel = %{version}
 
 %description devel
@@ -85,9 +90,12 @@ Statyczna biblioteka opartej na isl wersji Chunky Loop Generatora.
 %setup -q -n cloog-%{version}
 
 %build
+# with_gmp_exec_prefix=yes avoids adding -L/lib to LDFLAGS
 %configure \
 	--disable-silent-rules \
-	--with-isl=system
+	--with-gmp-exec-prefix \
+	--with-isl=system \
+	%{?with_osl:--with-osl=system}
 
 %{__make}
 

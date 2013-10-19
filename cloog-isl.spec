@@ -5,12 +5,12 @@
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
-Version:	0.18.0
+Version:	0.18.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Tools
 Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
-# Source0-md5:	be78a47bd82523250eb3e91646db5b3d
+# Source0-md5:	e34fca0540d840e5d0f6427e98c92252
 URL:		http://www.cloog.org/
 BuildRequires:	autoconf >= 2.13
 BuildRequires:	automake
@@ -132,6 +132,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/cloog/*.h
 %{_includedir}/cloog/isl
 %{_includedir}/cloog/matrix
+%dir %{_libdir}/cloog-isl
+%{_libdir}/cloog-isl/cloog-isl-config.cmake
+%dir %{_libdir}/isl
+%{_libdir}/isl/isl-config.cmake
 %{_pkgconfigdir}/cloog-isl.pc
 
 %files static

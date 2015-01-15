@@ -2,20 +2,20 @@
 # Conditional build:
 %bcond_without	osl	# OpenScop support
 #
-%define	isl_ver	0.13
+%define	isl_ver	0.14
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
-Version:	0.18.2
-Release:	3
+Version:	0.18.3
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Tools
-Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
-# Source0-md5:	69116aa6cd5e73f6b688d871875e1292
-Patch0:		cloog-missing.patch
-Patch1:		cloog-isl-git.patch
+#Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
+# git clone git://repo.or.cz/cloog.git -b cloog-0.18.3 cloog-0.18.3
+Source0:	http://pkgs.fedoraproject.org/repo/pkgs/cloog/cloog-%{version}.tar.gz/a65195e2f1fe1b91826b18a185d82859/cloog-%{version}.tar.gz
+# Source0-md5:	a65195e2f1fe1b91826b18a185d82859
 URL:		http://www.cloog.org/
-BuildRequires:	autoconf >= 2.13
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	gmp-devel >= 5.0.2
 BuildRequires:	gmp-c++-devel >= 5.0.2
@@ -91,10 +91,12 @@ Statyczna biblioteka opartej na isl wersji Chunky Loop Generatora.
 
 %prep
 %setup -q -n cloog-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 # with_gmp_exec_prefix=yes avoids adding -L/lib to LDFLAGS
 %configure \
 	--disable-silent-rules \

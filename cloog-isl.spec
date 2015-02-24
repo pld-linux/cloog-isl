@@ -7,7 +7,7 @@ Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
 Version:	0.18.3
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Development/Tools
 #Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz

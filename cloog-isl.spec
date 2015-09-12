@@ -2,18 +2,18 @@
 # Conditional build:
 %bcond_without	osl	# OpenScop support
 #
-%define	isl_ver	0.14
+%define	isl_ver	0.15
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
-Version:	0.18.3
-Release:	2
+Version:	0.18.4
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Tools
-#Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
-# git clone git://repo.or.cz/cloog.git -b cloog-0.18.3 cloog-0.18.3
-Source0:	http://pkgs.fedoraproject.org/repo/pkgs/cloog/cloog-%{version}.tar.gz/a65195e2f1fe1b91826b18a185d82859/cloog-%{version}.tar.gz
-# Source0-md5:	a65195e2f1fe1b91826b18a185d82859
+# git clone git://repo.or.cz/cloog.git -b cloog-0.18.4 cloog-0.18.4
+#Source0:	http://pkgs.fedoraproject.org/repo/pkgs/cloog/cloog-%{version}.tar.gz/a65195e2f1fe1b91826b18a185d82859/cloog-%{version}.tar.gz
+Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
+# Source0-md5:	e531f725244856c92c9bba009ff44faf
 URL:		http://www.cloog.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake

@@ -2,18 +2,19 @@
 # Conditional build:
 %bcond_without	osl	# OpenScop support
 #
-%define	isl_ver	0.15
+%define	isl_ver	0.18
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
-Version:	0.18.4
+Version:	0.18.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Development/Tools
-# git clone git://repo.or.cz/cloog.git -b cloog-0.18.4 cloog-0.18.4
-#Source0:	http://pkgs.fedoraproject.org/repo/pkgs/cloog/cloog-%{version}.tar.gz/a65195e2f1fe1b91826b18a185d82859/cloog-%{version}.tar.gz
-Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
-# Source0-md5:	e531f725244856c92c9bba009ff44faf
+# older?
+#Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
+#Source0Download: https://github.com/periscop/cloog/releases
+Source0:	https://github.com/periscop/cloog/releases/download/cloog-%{version}/cloog-%{version}.tar.gz
+# Source0-md5:	7e9058076193d8f53aae40cab94ad017
 URL:		http://www.cloog.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -21,7 +22,7 @@ BuildRequires:	gmp-devel >= 5.0.2
 BuildRequires:	gmp-c++-devel >= 5.0.2
 BuildRequires:	isl-devel >= %{isl_ver}
 BuildRequires:	libtool
-%{?with_osl:BuildRequires:	osl-devel}
+%{?with_osl:BuildRequires:	osl-devel >= 0.9.1}
 BuildRequires:	texinfo-texi2dvi
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	cloog = %{version}
@@ -52,6 +53,7 @@ Summary:	Chunky Loop Generator shared library - isl based version
 Summary(pl.UTF-8):	Biblioteka współdzielona Chunky Loop Generatora - wersja oparta na isl
 Group:		Libraries
 Requires:	isl >= %{isl_ver}
+%{?with_osl:Requires:	osl >= 0.9.1}
 
 %description libs
 Chunky Loop Generator shared library - isl based version.
@@ -68,7 +70,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gmp-devel >= 5.0.2
 Requires:	gmp-c++-devel >= 5.0.2
 Requires:	isl-devel >= %{isl_ver}
-%{?with_osl:Requires:	osl-devel}
+%{?with_osl:Requires:	osl-devel >= 0.9.1}
 Provides:	cloog-devel = %{version}
 
 %description devel

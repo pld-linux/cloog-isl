@@ -119,6 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcloog-isl.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -139,7 +142,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/cloog.pdf
 %attr(755,root,root) %{_libdir}/libcloog-isl.so
-%{_libdir}/libcloog-isl.la
 %dir %{_includedir}/cloog
 %{_includedir}/cloog/*.h
 %{_includedir}/cloog/isl

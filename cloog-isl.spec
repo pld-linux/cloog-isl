@@ -72,6 +72,8 @@ Requires:	gmp-c++-devel >= 5.0.2
 Requires:	isl-devel >= %{isl_ver}
 %{?with_osl:Requires:	osl-devel >= 0.9.2}
 Provides:	cloog-devel = %{version}
+Conflicts:	cloog-polylib-devel
+Conflicts:	cloog-ppl-devel
 
 %description devel
 The header files for Chunky Loop Generator library.

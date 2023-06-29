@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_without	osl	# OpenScop support
 #
-%define	isl_ver	0.20
+%define	isl_ver	0.26
 Summary:	The Chunky Loop Generator
 Summary(pl.UTF-8):	Chunky Loop Generator - generator pętli cząstkowych
 Name:		cloog-isl
-Version:	0.20.0
-Release:	3
+Version:	0.21.1
+Release:	1
 License:	LGPL v2.1+
 Group:		Development/Tools
 # older?
 #Source0:	http://www.bastoul.net/cloog/pages/download/cloog-%{version}.tar.gz
 #Source0Download: https://github.com/periscop/cloog/releases
 Source0:	https://github.com/periscop/cloog/releases/download/cloog-%{version}/cloog-%{version}.tar.gz
-# Source0-md5:	93695e7284c3ec05bcd7531e735b56a8
+# Source0-md5:	cbd2fd43b3421ce466bd638bf90b326d
 Patch0:		cflags.patch
 URL:		http://www.cloog.org/
 BuildRequires:	autoconf >= 2.53
@@ -22,12 +22,12 @@ BuildRequires:	automake
 BuildRequires:	gmp-devel >= 5.0.2
 BuildRequires:	gmp-c++-devel >= 5.0.2
 BuildRequires:	isl-devel >= %{isl_ver}
-BuildRequires:	libtool
-%{?with_osl:BuildRequires:	osl-devel >= 0.9.2}
+BuildRequires:	libtool >= 2:2
+%{?with_osl:BuildRequires:	osl-devel >= 0.9.7}
 BuildRequires:	texinfo-texi2dvi
 Requires:	%{name}-libs = %{version}-%{release}
 Provides:	cloog = %{version}
-Obsoletes:	cloog
+Obsoletes:	cloog < 0.16
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,7 +54,7 @@ Summary:	Chunky Loop Generator shared library - isl based version
 Summary(pl.UTF-8):	Biblioteka współdzielona Chunky Loop Generatora - wersja oparta na isl
 Group:		Libraries
 Requires:	isl >= %{isl_ver}
-%{?with_osl:Requires:	osl >= 0.9.2}
+%{?with_osl:Requires:	osl >= 0.9.7}
 
 %description libs
 Chunky Loop Generator shared library - isl based version.
@@ -71,7 +71,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 Requires:	gmp-devel >= 5.0.2
 Requires:	gmp-c++-devel >= 5.0.2
 Requires:	isl-devel >= %{isl_ver}
-%{?with_osl:Requires:	osl-devel >= 0.9.2}
+%{?with_osl:Requires:	osl-devel >= 0.9.7}
 Provides:	cloog-devel = %{version}
 Conflicts:	cloog-polylib-devel
 Conflicts:	cloog-ppl-devel
